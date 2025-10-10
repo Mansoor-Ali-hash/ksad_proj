@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Books Section</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Student Portal</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="admissions.html">Admissions</a>
+      <a href="exam-slip.html">Exam Slip</a>
+      <a href="books.html">Books</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <h2>Books & Materials</h2>
+
+      <input type="text" id="searchInput" placeholder="Search books..." />
+
+      <div id="booksList" class="books-grid">
+        <!-- JS will populate this -->
+      </div>
+    </section>
+    <section class="books-section">
+      <h2>Available Books</h2>
+    
+      <div class="book-card">
+        <h3>Computer Science 1st Year</h3>
+        <p>Basic programming and concepts.</p>
+        <a href="assets/books/computer1.pdf" download class="btn">📥 Download</a>
+      </div>
+    
+      <div class="book-card">
+        <h3>Mathematics 10th</h3>
+        <p>Algebra, Geometry, and Trigonometry.</p>
+        <a href="assets/books/math10.pdf" download class="btn">📥 Download</a>
+      </div>
+    </section>
+    
+  </main>
+  
+
+  <script src="js/books.js"></script>
+</body>
+</html>
