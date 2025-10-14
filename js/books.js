@@ -1,34 +1,46 @@
-const books = [
-    { title: "Computer Science - Part 1", file: "assets/books/computer1.pdf" },
-    { title: "Mathematics - Class 10", file: "assets/books/math10.pdf" },
-    { title: "English Grammar Guide", file: "assets/books/english_grammar.pdf" },
-    { title: "Physics Notes - XII", file: "assets/books/physics12.pdf" },
-    { title: "Islamiat Short Questions", file: "assets/books/islamiat.pdf" },
-  ];
-  
-  const booksList = document.getElementById("booksList");
-  const searchInput = document.getElementById("searchInput");
-  
-  function showBooks(filter = "") {
-    booksList.innerHTML = "";
-  
-    books
-      .filter(book => book.title.toLowerCase().includes(filter.toLowerCase()))
-      .forEach(book => {
-        const card = document.createElement("div");
-        card.className = "book-card";
-        card.innerHTML = `
-          <h3>${book.title}</h3>
-          <a href="${book.file}" target="_blank" download>📥 Download</a>
-        `;
-        booksList.appendChild(card);
-      });
-  }
-  
-  searchInput.addEventListener("input", () => {
-    showBooks(searchInput.value);
+// ==========================
+// Hero Section Image Slider
+// ==========================
+
+// Select all slide images
+const slides = document.querySelectorAll(".slides img");
+let currentSlide = 0;
+
+// Function to show one slide at a time
+function showSlide(index) {
+  slides.forEach((img, i) => {
+    img.style.opacity = i === index ? "1" : "0";
+    img.style.transition = "opacity 1.5s ease-in-out";
   });
-  
-  // Initial Load
-  showBooks();
-  
+}
+
+// Auto change every 4 seconds
+function startSlider() {
+  showSlide(currentSlide);
+  currentSlide = (currentSlide + 1) % slides.length;
+}
+
+// Start the slider
+if (slides.length > 0) {
+  showSlide(currentSlide);
+  setInterval(startSlider, 4000);
+}
+
+// ==========================
+// Scroll-to-Top Button
+// ==========================
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+if (scrollTopBtn) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollTopBtn.style.display = "block";
+    } else {
+      scrollTopBtn.style.display = "none";
+    }
+  });
+
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}

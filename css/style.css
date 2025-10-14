@@ -158,6 +158,7 @@ button:hover, .book-card a:hover, .btn:hover {
 }
 
 /* Hero Section */
+/* === HERO LAYOUT === */
 .hero {
   display: flex;
   align-items: center;
@@ -171,15 +172,18 @@ button:hover, .book-card a:hover, .btn:hover {
 
 .hero-content {
   flex: 1 1 400px;
+  padding: 20px;
   color: #389C8A;
-  z-index: 2;
 }
 
 .hero-content h2 {
   font-size: 2em;
   color: #AE7E37;
 }
-.hero-content span { color: #389C8A; }
+
+.hero-content span {
+  color: #389C8A;
+}
 
 .hero-content p {
   color: #74747C;
@@ -193,53 +197,101 @@ button:hover, .book-card a:hover, .btn:hover {
   margin: 0 0.5em;
   border-radius: 8px;
   transition: 0.3s;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
 }
+
 .hero-buttons .btn:hover {
   background: #389C8A;
 }
 
-/* Smooth Infinite Slider */
+/* === HERO SLIDER (FIXED VERSION) === */
 .hero-slider {
   flex: 1 1 400px;
+  max-width: 500px;
+  height: 300px;
+  position: relative;
   overflow: hidden;
   border-radius: 20px;
   border: 3px solid #AE7E37;
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  position: relative;
 }
 
 .slides {
-  display: flex;
-  width: calc(250px * 8); /* 8 images total */
-  animation: scrollSlider 30s linear infinite;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .slides img {
-  width: 250px;
-  height: 200px;
-  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* cover → contain */
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
   border-radius: 20px;
-  margin-right: 15px;
-  flex-shrink: 0;
+  background-color: #fff; /* ya koi halka bg color taake portrait ke side me blank area dikhai de */
 }
 
-/* Continuous scrolling effect */
-@keyframes scrollSlider {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+
+.slides img.active {
+  opacity: 1;
+  z-index: 2;
 }
 
-/* Responsive */
+/* === NAVIGATION BUTTONS === */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 2em;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 3;
+  transition: background 0.3s;
+}
+
+.nav-btn:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+.prev { left: 15px; }
+.next { right: 15px; }
+
+/* === RESPONSIVE DESIGN === */
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
     text-align: center;
   }
-  .slides img {
-    width: 200px;
-    height: 150px;
+
+  .hero-slider {
+    width: 100%;
+    height: 220px;
+    margin-top: 20px;
+  }
+
+  .hero-content h2 {
+    font-size: 1.6em;
+  }
+
+  .nav-btn {
+    font-size: 1.5em;
+    padding: 8px 10px;
   }
 }
+
+
+
 /* Books gird section */
 .books-grid {
   display: grid;
@@ -288,3 +340,116 @@ button:hover, .book-card a:hover, .btn:hover {
   margin: 0 auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+/* ===== Responsive Slider Fix ===== */
+.hero-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-slider img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: transform 1s ease;
+}
+
+/* For small mobile screens */
+/* ======================================
+📱 ANDROID RESPONSIVE DESIGN (max-width: 768px)
+====================================== */
+@media (max-width: 768px) {
+
+  /* 🔹 Basic Reset */
+  body {
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  /* 🔹 HERO SECTION */
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2em 1em;
+    border-radius: 0 0 25px 25px;
+  }
+
+  .hero-content {
+    width: 100%;
+    flex: none;
+    margin-bottom: 1.2em;
+    padding: 0 1em;
+  }
+
+  .hero-content h2 {
+    font-size: 1.4em;
+    line-height: 1.3em;
+  }
+
+  .hero-content p {
+    font-size: 0.95em;
+    margin-bottom: 1em;
+  }
+
+  .hero-buttons .btn {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 0.9em;
+    margin: 5px;
+    border-radius: 6px;
+  }
+
+  /* 🔹 HERO SLIDER */
+  .hero-slider {
+    width: 100%;
+    height: 230px; /* optimized height for mobile */
+    max-width: 95%;
+    border-radius: 15px;
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  .slides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+
+  /* 🔹 NAVIGATION BUTTONS */
+  .nav-btn {
+    font-size: 1.3em;
+    padding: 8px 10px;
+    background: rgba(0,0,0,0.4);
+  }
+
+  .nav-btn:hover {
+    background: rgba(0,0,0,0.6);
+  }
+
+  /* 🔹 HEADERS OR TITLES */
+  header h1, h2, h3 {
+    font-size: 1.2em;
+    line-height: 1.4em;
+  }
+
+  /* 🔹 FOOTER OR OTHER SECTIONS */
+  footer {
+    text-align: center;
+    padding: 1em 0.5em;
+    font-size: 0.9em;
+  }
+
+  /* 🔹 OPTIONAL: spacing adjustments for smaller screens */
+  section {
+    padding: 1.5em 0.8em;
+  }
+
+  .book-card, .announcement-card {
+    width: 1
+
