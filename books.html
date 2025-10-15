@@ -3,49 +3,268 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Books Section</title>
+  <title>Books Section | Student Portal</title>
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ======== BOOKS PAGE STYLING ======== */
+    /* 📚 Books Watermark Background */
+body {
+  font-family: "Poppins", sans-serif;
+  background: url("assets/nav pic/n2.jpg") repeat center center fixed;
+  background-size: 500px; /* watermark size */
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+
+    /* 🟢 Compact Navbar */
+header {
+  background:  #AE7E37;
+  color: white;
+  padding: 0.5em 0;        /* height kam ki gayi */
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  font-size: 1.4em;        /* thoda chhota text */
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+header nav {
+  margin-top: 2px;         /* spacing reduce */
+}
+
+header nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 0.95em;
+  transition: 0.3s;
+}
+
+header nav a:hover {
+  color: #389C8A;
+}
+
+
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    main {
+      padding: 2em;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #AE7E37;
+      border-left: 5px solid #389C8A;
+      padding-left: 10px;
+      margin-bottom: 1em;
+    }
+
+    /* CLASS BOOKS GRID */
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5em;
+    }
+
+    .book-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      padding: 1.2em;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .book-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .book-card h3 {
+      color: #389C8A;
+      margin-bottom: 0.5em;
+    }
+
+    .book-card p {
+      font-size: 0.95em;
+      color: #666;
+      margin-bottom: 1em;
+    }
+
+    .book-card .btn {
+      display: inline-block;
+      background: #AE7E37;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9em;
+      transition: background 0.3s;
+    }
+
+    .book-card .btn:hover {
+      background: #389C8A;
+    }
+
+    /* GENERAL READING SECTION */
+    .reading-section {
+      margin-top: 3em;
+    }
+
+    .reading-card {
+      background: linear-gradient(120deg, #fff, #e8f8f4);
+      border: 1px solid #AE7E3733;
+      border-radius: 15px;
+      padding: 1.2em;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .reading-card:hover {
+      background: #389C8A10;
+      transform: scale(1.03);
+    }
+
+    .reading-card h3 {
+      color: #AE7E37;
+      margin-bottom: 0.3em;
+    }
+
+    .reading-card p {
+      color: #555;
+      margin-bottom: 1em;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      main {
+        padding: 1em;
+      }
+
+      h2 {
+        font-size: 1.2em;
+      }
+
+      .book-card, .reading-card {
+        padding: 1em;
+      }
+
+      .book-card h3, .reading-card h3 {
+        font-size: 1.1em;
+      }
+    }
+
+h2.F {
+  text-align: center;
+  margin: 0 auto;
+  display: table;
+}
+
+  </style>
 </head>
 <body>
   <header>
-    <h1>Student Portal</h1>
+    <h1>📚 Student Portal</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="admissions.html">Admissions</a>
       <a href="exam-slip.html">Exam Slip</a>
-      <a href="books.html">Books</a>
+      <a href="books.html" class="active">Books</a>
     </nav>
   </header>
 
   <main>
-    <section class="form-section">
-      <h2>Books & Materials</h2>
+    <!-- 🎓 CLASS-WISE BOOKS -->
+    <section>
+      <h2>🎓 Class-wise Subjective Books</h2>
+      <div class="books-grid">
+        <div class="book-card">
+          <h3>9th Class Books</h3>
+          <p>All 9th class subjects PDF from STBB official source.</p>
+          <a href="https://ebooks.stbb.edu.pk/english/class-ix" target="_blank" class="btn">📘 Download</a>
+        </div>
 
-      <input type="text" id="searchInput" placeholder="Search books..." />
+        <div class="book-card">
+          <h3>10th Class Books</h3>
+          <p>Access all 10th class textbooks in PDF format.</p>
+          <a href="https://ebooks.stbb.edu.pk/english/class-x" target="_blank" class="btn">📘 Download</a>
+        </div>
 
-      <div id="booksList" class="books-grid">
-        <!-- JS will populate this -->
+        <div class="book-card">
+          <h3>11th (1st Year) Books</h3>
+          <p>Intermediate part 1 books collection.</p>
+          <a href="https://ebooks.stbb.edu.pk/english/class-xi" target="_blank" class="btn">📘 Download</a>
+        </div>
+
+        <div class="book-card">
+          <h3>12th (2nd Year) Books</h3>
+          <p>Complete syllabus for intermediate part 2.</p>
+          <a href="https://ebooks.stbb.edu.pk/english/class-xii" target="_blank" class="btn">📘 Download</a>
+        </div>
       </div>
     </section>
-    <section class="books-section">
-      <h2>Available Books</h2>
-    
-      <div class="book-card">
-        <h3>Computer Science 1st Year</h3>
-        <p>Basic programming and concepts.</p>
-        <a href="assets/books/computer1.pdf" download class="btn">📥 Download</a>
-      </div>
-    
-      <div class="book-card">
-        <h3>Mathematics 10th</h3>
-        <p>Algebra, Geometry, and Trigonometry.</p>
-        <a href="assets/books/math10.pdf" download class="btn">📥 Download</a>
+
+    <!-- 📖 GENERAL READING SECTION -->
+    <section class="reading-section">
+      <h2>📖 General Reading Books</h2>
+      <div class="books-grid">
+        <div class="reading-card">
+          <h3>The Power of Habit</h3>
+          <p>Learn how habits shape your success and productivity.</p>
+          <a href="assets/books/power_of_habit.pdf" download class="btn">📥 Download</a>
+        </div>
+
+        <div class="reading-card">
+          <h3>Think and Grow Rich</h3>
+          <p>Classic motivational book by Napoleon Hill.</p>
+          <a href="assets/books/think_and_grow_rich.pdf" download class="btn">📥 Download</a>
+        </div>
+
+        <div class="reading-card">
+          <h3>Rich Dad Poor Dad</h3>
+          <p>Financial wisdom and life lessons simplified.</p>
+          <a href="assets/books/rich_dad_poor_dad.pdf" download class="btn">📥 Download</a>
+        </div>
+
+        <div class="reading-card">
+          <h3>Ikigai: The Japanese Secret</h3>
+          <p>Discover purpose and balance in life through Ikigai.</p>
+          <a href="assets/books/ikigai.pdf" download class="btn">📥 Download</a>
+        </div>
       </div>
     </section>
-    
+
+    <!-- 🌟 CREATIVE ADDITION -->
+    <section class="reading-section">
+      <span class="F"><h2>🌟 Featured Picks by KSA Digri</h2></span>
+      <div class="books-grid">
+        <div class="reading-card">
+          <h3>Digital Learning Essentials</h3>
+          <p>A quick guide to mastering online education and e-learning tools.</p>
+          <a href="assets/books/digital_learning.pdf" download class="btn">📥 Download</a>
+        </div>
+
+        <div class="reading-card">
+          <h3>History of Sindh</h3>
+          <p>Explore Sindh's cultural roots and historical journey.</p>
+          <a href="assets/books/history_of_sindh.pdf" download class="btn">📥 Download</a>
+        </div>
+      </div>
+    </section>
   </main>
-  
-
-  <script src="js/books.js"></script>
 </body>
 </html>

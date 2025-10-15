@@ -451,5 +451,7 @@ button:hover, .book-card a:hover, .btn:hover {
   }
 
   .book-card, .announcement-card {
-    width: 1
+    width: 100%;
+    bottom: 1em;
 
+  }}
