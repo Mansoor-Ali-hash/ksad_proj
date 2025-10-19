@@ -1,142 +1,128 @@
-// document.getElementById("admissionForm").addEventListener("submit", function(e) {
-//     e.preventDefault();
-  
-//     const name = document.getElementById("name").value.trim();
-//     const email = document.getElementById("email").value.trim();
-//     const dob = document.getElementById("dob").value;
-//     const course = document.getElementById("course").value;
-  
-//     if (name && email && dob && course) {
-//       document.getElementById("responseMsg").innerText = `Thank you, ${name}! Your application has been submitted.`;
-//       this.reset();
-//     } else {
-//       document.getElementById("responseMsg").innerText = "Please fill in all fields.";
-//     }
-//   });
+// =======================
+// HERO SLIDER FUNCTIONALITY
+// =======================
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".hero-slider .slides img");
+  const prevBtn = document.querySelector(".hero-slider .prev");
+  const nextBtn = document.querySelector(".hero-slider .next");
+  let currentIndex = 0;
+  let slideInterval;
+  const intervalTime = 4000; // 4 seconds per slide
 
-// window.addEventListener("scroll", () => {
-//   if (window.scrollY > 300) {
-//     scrollTopBtn.style.display = "block";
-//   } else {
-//     scrollTopBtn.style.display = "none";
-//   }
-// });
+  // Randomize slide order each time page loads
+  const shuffledSlides = Array.from(slides);
+  for (let i = shuffledSlides.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    shuffledSlides[i].parentNode.insertBefore(shuffledSlides[j], shuffledSlides[i].nextSibling);
+  }
 
-// scrollTopBtn.addEventListener("click", () => {
-//   window.scrollTo({ top: 0, behavior: 'smooth' });
-// });
-// document.getElementById("admissionForm").addEventListener("submit", function(e) {
-//   e.preventDefault();
+  // Function to show the current slide
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove("active", "fade-in", "zoom-in");
+      if (i === index) {
+        slide.classList.add("active", "fade-in", "zoom-in");
+      }
+    });
+  }
 
-//   const name = document.getElementById("name").value.trim();
-//   const fatherName = document.getElementById("fatherName").value.trim();
-//   const dob = document.getElementById("dob").value;
-//   const religion = document.getElementById("religion").value.trim();
-//   const gender = document.getElementById("gender").value;
-//   const currentAddress = document.getElementById("currentAddress").value.trim();
-//   const email = document.getElementById("email").value.trim();
-//   const selfContact = document.getElementById("selfContact").value.trim();
-//   const fatherContact = document.getElementById("fatherContact").value.trim();
-//   const currentClass = document.getElementById("currentClass").value.trim();
-//   const studyGroup = document.getElementById("studyGroup").value;
+  // Next slide
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  }
 
-//   if (name && fatherName && dob && religion && gender && currentAddress && email && selfContact && fatherContact && currentClass && studyGroup) {
-//     document.getElementById("responseMsg").innerText = `🎉 Congratulations ${name}! Your application has been successfully submitted. We will contact you soon.`;
-//     this.reset();
-//   } else {
-//     document.getElementById("responseMsg").innerText = "⚠️ Please fill in all fields.";
-//   }
-// });
-// // EmailJS library load karo
-// (function() {
-//   emailjs.init("Mansoor_Ali"); // yeh apko EmailJS dashboard se milega
-// })();
+  // Previous slide
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(currentIndex);
+  }
 
-// // Jab form submit ho
-// document.getElementById("admissionForm").addEventListener("submit", function(e) {
-//   e.preventDefault();
+  // Auto slide
+  function startAutoSlide() {
+    slideInterval = setInterval(nextSlide, intervalTime);
+  }
 
-//   emailjs.sendForm('GMail', 'khanscienceademy2@gmail.com', this)
-//       .then(function() {
-//           console.log('SUCCESS!');
-//           document.getElementById("responseMsg").innerText = "🎉 Your application has been submitted successfully!";
-//       }, function(error) {
-//           console.log('FAILED...', error);
-//           document.getElementById("responseMsg").innerText = "⚠️ There was an error. Please try again.";
-//       });
+  // Stop auto slide
+  function stopAutoSlide() {
+    clearInterval(slideInterval);
+  }
 
-//   this.reset(); // Form reset after sending
-// });
-// // EmailJS library load karo
-// (function() {
-//     emailjs.init("YOUR_USER_ID"); // yeh apko EmailJS dashboard se milega
-// })();
+  // Event listeners
+  if (nextBtn && prevBtn) {
+    nextBtn.addEventListener("click", () => {
+      nextSlide();
+      stopAutoSlide();
+      startAutoSlide();
+    });
 
-// // Jab form submit ho
-// document.getElementById("admissionForm").addEventListener("submit", function(e) {
-//     e.preventDefault();
+    prevBtn.addEventListener("click", () => {
+      prevSlide();
+      stopAutoSlide();
+      startAutoSlide();
+    });
+  }
 
-//     emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-//         .then(function() {
-//             console.log('SUCCESS!');
-//             document.getElementById("responseMsg").innerText = "🎉 Your application has been submitted successfully!";
-//         }, function(error) {
-//             console.log('FAILED...', error);
-//             document.getElementById("responseMsg").innerText = "⚠️ There was an error. Please try again.";
-//         });
+  // Pause on hover
+  const heroSlider = document.querySelector(".hero-slider");
+  if (heroSlider) {
+    heroSlider.addEventListener("mouseenter", stopAutoSlide);
+    heroSlider.addEventListener("mouseleave", startAutoSlide);
+  }
 
-//     this.reset(); // Form reset after sending
-// });
-// // Program for pics sliding
+  // Start everything
+  showSlide(currentIndex);
+  startAutoSlide();
 
-// const slides = document.querySelectorAll(".slides img");
-// let current = 0;
-
-// function showSlide(index) {
-//   slides.forEach((img, i) => {
-//     img.classList.toggle("active", i === index);
-//   });
-// }
-
-// // Auto change every 4 seconds
-// function startSlider() {
-//   showSlide(current);
-//   current = (current + 1) % slides.length;
-// }
-
-// setInterval(startSlider, 4000);
-// ==========================
-// Hero Section Image Slider
-// ==========================
-
-// Select all slide images
-const slides = document.querySelectorAll(".slides img");
-let index = 0;
-
-// Function to show slide
-function showSlide(i) {
-  slides.forEach((img, j) => {
-    img.classList.toggle("active", j === i);
+  // =======================
+  // NAVBAR SCROLL EFFECT
+  // =======================
+  const nav = document.querySelector("nav");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      nav.classList.add("scrolled");
+    } else {
+      nav.classList.remove("scrolled");
+    }
   });
-}
 
-// Next button
-document.querySelector(".next").addEventListener("click", () => {
-  index = (index + 1) % slides.length;
-  showSlide(index);
+  // =======================
+  // ANNOUNCEMENTS DISPLAY
+  // =======================
+  const announcements = [
+    {
+      title: "Admissions Open (2025)",
+      desc: "Registration is now open for all Coaching & Computer Programs. Apply online today!"
+    },
+    {
+      title: "New Computer Lab",
+      desc: "We are pleased to announce a newly upgraded computer lab with latest PCs and internet facilities."
+    },
+    {
+      title: "Annual Result Week",
+      desc: "Result week starts from November 1st. All students must collect their result cards from office."
+    }
+  ];
+
+  const container = document.querySelector(".announcements");
+  if (container) {
+    announcements.forEach((a, i) => {
+      const card = document.createElement("div");
+      card.classList.add("announcement-card");
+      card.style.opacity = "0";
+      card.style.transform = "translateY(20px)";
+      card.innerHTML = `
+        <h3>${a.title}</h3>
+        <p>${a.desc}</p>
+      `;
+      container.appendChild(card);
+
+      // Animate cards one by one
+      setTimeout(() => {
+        card.style.transition = "all 0.6s ease";
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
+      }, i * 300);
+    });
+  }
 });
-
-// Previous button
-document.querySelector(".prev").addEventListener("click", () => {
-  index = (index - 1 + slides.length) % slides.length;
-  showSlide(index);
-});
-
-// Auto slide every 4 seconds
-setInterval(() => {
-  index = (index + 1) % slides.length;
-  showSlide(index);
-}, 4000);
-
-// Show first image at start
-showSlide(index);

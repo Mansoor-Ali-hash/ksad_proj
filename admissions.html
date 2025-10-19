@@ -1,151 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admission Form - Student Portal</title>
-  <link rel="stylesheet" href="style.css"> <!-- Apni CSS file ka link -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admissions | Khan Science Academy</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-
   <header>
-    <h1>Student Admission Form</h1>
+    <h1>Khan Science Academy Digri</h1>
     <nav>
-      <a href="index.html">Home</a> |
-      <a href="admission.html">Admissions</a> |
-      <a href="exam.html">Exam Slip</a> |
+      <a href="index.html">Home</a>
       <a href="books.html">Books</a>
+      <a href="exam-slip.html">Exam Slip</a>
+      <a href="admissions.html" class="active">Admissions</a>
     </nav>
   </header>
 
   <main>
-    <section class="form-section">
-      <form id="admissionForm">
-        <div class="form-group">
-          <label for="name">Student Name:</label>
-          <input type="text" id="name" name="name" required>
-        </div>
+    <section class="admission-form">
+      <h2>Online Admission Form</h2>
 
-        <div class="form-group">
-          <label for="fatherName">Father's Name:</label>
-          <input type="text" id="fatherName" name="fatherName" required>
-        </div>
+      <!-- ✅ Netlify Form -->
+     <!DOCTYPE html>
 
-        <div class="form-group">
-          <label for="dob">Date of Birth:</label>
-          <input type="date" id="dob" name="dob" required>
-        </div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Admission Form</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-        <div class="form-group">
-          <label for="religion">Religion:</label>
-          <input type="text" id="religion" name="religion" required>
-        </div>
+  <header>
 
-        <div class="form-group">
-          <label for="gender">Gender:</label>
-          <select id="gender" name="gender" required>
-            <option value="">Select</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
+  </header>
 
-        <div class="form-group">
-          <label for="address">Current Address:</label>
-          <textarea id="address" name="address" rows="3" required></textarea>
-        </div>
+  <main>
+    <h2>Coaching & Computer Admission</h2>
+<form name="admissionForm" method="POST" data-netlify="true">
+  <label for="studentName">Student Name:</label>
+  <input type="text" id="studentName" name="studentName" required>
 
-        <div class="form-group">
-          <label for="email">Email Address:</label>
-          <input type="email" id="email" name="email" required>
-        </div>
+  <label for="fatherName">Father’s Name:</label>
+  <input type="text" id="fatherName" name="fatherName" required>
 
-        <div class="form-group">
-          <label for="selfContact">Self Contact Number:</label>
-          <input type="tel" id="selfContact" name="selfContact" required>
-        </div>
+  <label for="dob">Date of Birth:</label>
+  <input type="date" id="dob" name="dob" required>
 
-        <div class="form-group">
-          <label for="fatherContact">Father's Contact Number:</label>
-          <input type="tel" id="fatherContact" name="fatherContact" required>
-        </div>
+  <label for="religion">Religion:</label>
+  <input type="text" id="religion" name="religion">
 
-        <div class="form-group">
-          <label for="currentClass">Current Class:</label>
-          <input type="text" id="currentClass" name="currentClass" required>
-        </div>
+  <label for="gender">Gender:</label>
+  <select id="gender" name="gender">
+    <option value="">Select</option>
+    <option>Male</option>
+    <option>Female</option>
+    <option>Other</option>
+  </select>
 
-        <div class="form-group">
-          <label for="studyGroup">Study Group:</label>
-          <select id="studyGroup" name="studyGroup" required>
-            <option value="">Select</option>
-            <option value="Pre-Medical">Pre-Medical</option>
-            <option value="Pre-Engineering">Pre-Engineering</option>
-            <option value="Computer Science">Computer Science</option>
-            <option value="Science">Science</option>
-            <option value="Commerce">Commerce</option>
-            <option value="Arts">Arts</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
+  <label for="address">Current Address:</label>
+  <textarea id="address" name="address" rows="3"></textarea>
 
-        <button type="submit">Submit Application</button>
-      </form>
+  <label for="email">Email Address:</label>
+  <input type="email" id="email" name="email">
 
-      <div id="responseMsg" class="response-message"></div>
+  <label for="selfContact">Self Contact Number:</label>
+  <input type="tel" id="selfContact" name="selfContact">
+
+  <label for="fatherContact">Father’s Contact Number:</label>
+  <input type="tel" id="fatherContact" name="fatherContact">
+
+  <label for="currentClass">Current Class:</label>
+  <input type="text" id="currentClass" name="currentClass">
+
+  <label for="studyGroup">Study Group:</label>
+  <select id="studyGroup" name="studyGroup">
+    <option value="">Select</option>
+    <option>Science</option>
+    <option>Arts</option>
+    <option>Commerce</option>
+    <option>Computer</option>
+  </select>
+
+  <label for="programType">Program Type:</label>
+  <select id="programType" name="programType">
+    <option value="">Select</option>
+    <option>Coaching Classes</option>
+    <option>Computer Course</option>
+  </select>
+  <label for="courseType">Course Type:</label>
+  <select id="programType" name="programType">
+    <option value="">Select</option>
+    <option>DIT (One year)</option>
+    <option>CIT (6-Months</option>
+    <option>OAC (3-Months)</option>
+    <option>Ai (Artificial Intelligence) (3-Months)</option>
+  </select>
+
+
+  <button type="submit">Submit Application</button>
+</form>
+```
+
+  </main>
+
+  <footer>
+    © 2025 Khan Science Academy Digri, Mirpurkhas. 
+  </footer>
+
+</body>
+</html>
+
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Student Portal. All rights reserved.</p>
+    <p>&copy; 2025 Khan Science Academy, Digri. All rights reserved.</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
-  <script>
-    // EmailJS Initialization
-    (function() {
-      emailjs.init("YOUR_USER_ID"); // <-- Yahan apna User ID dalna hoga
-    })();
-
-    document.getElementById("admissionForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      // Data Collect
-      const formData = {
-        name: document.getElementById("name").value.trim(),
-        fatherName: document.getElementById("fatherName").value.trim(),
-        dob: document.getElementById("dob").value,
-        religion: document.getElementById("religion").value.trim(),
-        gender: document.getElementById("gender").value,
-        address: document.getElementById("address").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        selfContact: document.getElementById("selfContact").value.trim(),
-        fatherContact: document.getElementById("fatherContact").value.trim(),
-        currentClass: document.getElementById("currentClass").value.trim(),
-        studyGroup: document.getElementById("studyGroup").value
-      };
-
-      // EmailJS Service
-      emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", formData)
-      .then(function(response) {
-        console.log("SUCCESS!", response.status, response.text);
-        document.getElementById("responseMsg").innerHTML = `
-          <div style="color: green; font-size: 18px; margin-top: 15px;">
-            🎉 Thank you! Your admission form has been successfully submitted. We will contact you soon.
-          </div>
-        `;
-        document.getElementById("admissionForm").reset();
-      }, function(error) {
-        console.log("FAILED...", error);
-        document.getElementById("responseMsg").innerHTML = `
-          <div style="color: red; font-size: 18px; margin-top: 15px;">
-            ❌ Oops! Something went wrong. Please try again later.
-          </div>
-        `;
-      });
-    });
-  </script>
-
+  <script src="js/books.js"></script>
 </body>
 </html>

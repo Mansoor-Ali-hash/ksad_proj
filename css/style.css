@@ -157,28 +157,52 @@ button:hover, .book-card a:hover, .btn:hover {
   background: var(--gold); color: var(--teal);
 }
 
-/* Hero Section */
-/* === HERO LAYOUT === */
+/* Hero Section Start */
+/* 🎓 HERO SECTION (KSA Digri Updated 2025 Edition) */
 .hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  background: linear-gradient(120deg, #E3E3E3, #389C8A20);
-  padding: 3em 2em;
+  background: linear-gradient(120deg, #f5f5f5, #eaf8f3);
+  padding: 1em 0.5em;
   border-bottom: 5px solid #AE7E37;
   border-radius: 0 0 40px 40px;
+  position: relative;
+  overflow: hidden;
 }
 
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(174,126,55,0.15), transparent 70%);
+  animation: rotateBg 40s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotateBg {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* === HERO CONTENT === */
 .hero-content {
-  flex: 1 1 400px;
+  flex: 1 1 420px;
   padding: 20px;
   color: #389C8A;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-content h2 {
-  font-size: 2em;
+  font-size: 2.3em;
   color: #AE7E37;
+  line-height: 1.3;
+  animation: fadeInDown 1.2s ease-in-out;
 }
 
 .hero-content span {
@@ -186,9 +210,10 @@ button:hover, .book-card a:hover, .btn:hover {
 }
 
 .hero-content p {
-  color: #74747C;
+  color: #555;
   font-size: 1.1em;
-  margin-bottom: 1.5em;
+  margin-bottom: 0.5em;
+  animation: fadeInUp 1.2s ease-in-out;
 }
 
 .hero-buttons .btn {
@@ -196,26 +221,30 @@ button:hover, .book-card a:hover, .btn:hover {
   color: white;
   margin: 0 0.5em;
   border-radius: 8px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
   padding: 10px 15px;
   border: none;
   cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .hero-buttons .btn:hover {
   background: #389C8A;
+  transform: translateY(-3px);
 }
 
-/* === HERO SLIDER (FIXED VERSION) === */
+/* === HERO SLIDER === */
 .hero-slider {
   flex: 1 1 400px;
-  max-width: 500px;
-  height: 300px;
+  max-width: 720px;
+  height: 420px;
   position: relative;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 25px;
   border: 3px solid #AE7E37;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+  background: #fff;
 }
 
 .slides {
@@ -230,18 +259,29 @@ button:hover, .book-card a:hover, .btn:hover {
   left: 50%;
   width: 100%;
   height: 100%;
-  object-fit: contain; /* cover → contain */
-  transform: translate(-50%, -50%);
+  object-fit: contain;
+  transform: translate(-50%, -50%) scale(1.05);
   opacity: 0;
-  transition: opacity 1.2s ease-in-out;
-  border-radius: 20px;
-  background-color: #fff; /* ya koi halka bg color taake portrait ke side me blank area dikhai de */
+  border-radius: 15px;
+  transition: opacity 1s ease-in-out, transform 3s ease-in-out;
+  background: #fff;
 }
-
 
 .slides img.active {
   opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
   z-index: 2;
+}
+
+/* === SLIDER ANIMATIONS === */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* === NAVIGATION BUTTONS === */
@@ -249,39 +289,42 @@ button:hover, .book-card a:hover, .btn:hover {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.4);
   color: white;
   border: none;
   font-size: 2em;
   padding: 10px 15px;
   border-radius: 50%;
   cursor: pointer;
-  z-index: 3;
-  transition: background 0.3s;
+  z-index: 10;
+  transition: all 0.3s ease;
 }
 
 .nav-btn:hover {
-  background: rgba(0,0,0,0.8);
+  background: rgba(255,255,255,0.8);
+  color: black;
+  transform: scale(1.1);
 }
 
 .prev { left: 15px; }
 .next { right: 15px; }
 
 /* === RESPONSIVE DESIGN === */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .hero {
     flex-direction: column;
     text-align: center;
+    padding: 2em 1em;
+  }
+
+  .hero-content h2 {
+    font-size: 1.8em;
   }
 
   .hero-slider {
     width: 100%;
-    height: 220px;
-    margin-top: 20px;
-  }
-
-  .hero-content h2 {
-    font-size: 1.6em;
+    height: 250px;
+    margin-top: 1em;
   }
 
   .nav-btn {
@@ -289,6 +332,27 @@ button:hover, .book-card a:hover, .btn:hover {
     padding: 8px 10px;
   }
 }
+
+@media (max-width: 500px) {
+  .hero {
+    padding: 1.5em 1em;
+  }
+
+  .hero-content h2 {
+    font-size: 1.5em;
+  }
+
+  .hero-buttons .btn {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+  }
+
+  .hero-slider {
+    height: 200px;
+  }
+}
+/* Her Section End */
 
 
 
@@ -455,3 +519,150 @@ button:hover, .book-card a:hover, .btn:hover {
     bottom: 1em;
 
   }}
+
+
+  /* **************Admission Form Section**************** */
+
+  /* ==== ADMISSION FORM STYLING ==== */
+/* ===== ADMISSION FORM – CLASSIC SCHOOL STYLE ===== */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fdfdfd;
+  margin: 0;
+  padding: 0;
+  color: #222;
+}
+
+/* Header */
+header {
+  background-color: #004d40;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+/* Navigation */
+nav {
+  margin-top: 8px;
+}
+
+nav a {
+  color: #ffeb3b;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+/* Main Form Area */
+main {
+  max-width: 800px;
+  margin: 30px auto;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+main h2 {
+  text-align: center;
+  color: #004d40;
+  border-bottom: 2px solid #009688;
+  padding-bottom: 8px;
+}
+
+/* Form Labels and Inputs */
+form label {
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-top: 15px;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+  margin-top: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #009688;
+  box-shadow: 0 0 5px rgba(0,150,136,0.3);
+  outline: none;
+}
+
+/* Submit Button */
+button {
+  background-color: #009688;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #00796b;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-style: italic;
+  padding: 15px;
+  color: #333;
+  background-color: #f4f4f4;
+  margin-top: 40px;
+  border-top: 1px solid #ddd;
+}
+
+/* Responsive Layout */
+@media (max-width: 600px) {
+  main {
+    margin: 10px;
+    padding: 20px;
+  }
+
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+/* Optional Background Watermark */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url("assets/bg-books-watermark.png") center/contain no-repeat;
+  opacity: 0.06;
+  z-index: -1;
+}
