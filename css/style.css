@@ -13,7 +13,7 @@ body {
   color: var(--teal);
 }
 
-/* HEADER STYLING */
+/* ===== HEADER STYLING ===== */
 header {
   background: linear-gradient(90deg, #AE7E37, #389C8A);
   color: white;
@@ -24,15 +24,14 @@ header {
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
-/* Flex Layout */
 .header-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
-/* Left Side */
+/* ===== LEFT SIDE ===== */
 .logo-section {
   display: flex;
   align-items: center;
@@ -47,19 +46,24 @@ header {
 }
 
 .logo-section h1 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: bold;
   color: #E3E3E3;
+  white-space: nowrap;
 }
 
-/* Right Side */
+/* ===== NAVIGATION ===== */
 .nav-section {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-/* Nav Links */
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
 .nav-links a {
   color: #E3E3E3;
   text-decoration: none;
@@ -75,11 +79,16 @@ header {
   color: #389C8A;
 }
 
-/* Social Icons */
+/* ===== SOCIAL ICONS ===== */
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .social-icons a {
   color: #E3E3E3;
   font-size: 1.2em;
-  margin-left: 10px;
   transition: 0.3s;
 }
 
@@ -87,51 +96,90 @@ header {
   color: #AE7E37;
 }
 
-/* Hamburger icon styling */
+/* ===== MENU TOGGLE BUTTON ===== */
 .menu-toggle {
   display: none;
-  font-size: 1.8rem;
+  font-size: 1.8em;
+  color: #E3E3E3;
   cursor: pointer;
-  color: #333;
+  border: none;
+  background: transparent;
 }
 
-/* Show hamburger on small screens */
-@media (max-width: 768px) {
-  nav {
-    display: none;
+/* ===== HAMBURGER MENU ===== */
+.menu-toggle {
+  display: none;
+  font-size: 1.8em;
+  color: #E3E3E3;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+/* ===== RESPONSIVE SECTION ===== */
+@media (max-width: 850px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
+
+  .logo-section {
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+
+  .social-icons {
+    order: 2;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
   .menu-toggle {
     display: block;
     position: absolute;
-    top: 15px;
-    right: 20px;
+    top: 18px;
+    right: 15px;
+    font-size: 1.8em;
   }
-}
 
-/* Responsive (for mobile) */
-@media (max-width: 768px) {
+  .nav-section {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .nav-links {
     display: none;
     flex-direction: column;
     background: #389C8A;
-    position: absolute;
-    top: 70px;
-    right: 10px;
-    width: 200px;
+    width: 90%;
     border-radius: 10px;
-    text-align: right;
-    padding: 10px;
+    padding: 15px;
+    margin-top: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
   }
 
   .nav-links.show {
     display: flex;
   }
-
-  .menu-toggle {
-    display: block;
-  }
 }
 
+@media (max-width: 480px) {
+  .logo-section img {
+    height: 50px;
+    width: 50px;
+  }
+
+  .logo-section h1 {
+    font-size: 0.8rem;
+  }
+
+  .social-icons a {
+    font-size: 1.1em;
+  }
+  .nav-btn{visibility: hidden;}
+}
 /**************************************************/
 /* Form Section */
 .form-section, .book-card {
@@ -222,10 +270,10 @@ button:hover, .book-card a:hover, .btn:hover {
   margin: 0 0.5em;
   border-radius: 8px;
   transition: all 0.3s ease;
-  padding: 10px 15px;
+  padding: 5px 8px;
   border: none;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 500;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
@@ -373,21 +421,22 @@ button:hover, .book-card a:hover, .btn:hover {
 }
 .videos {
   text-align: center;
-  margin: 3em 1em;
+  margin: 2.5em 0.1em;
   background: var(--cream);
-  padding: 2em;
+  padding: 0.1em;
   border-radius: 10px;
   border: 2px solid var(--gold);
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 .video-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1em;
   margin-top: 1.5em;
+  
 }
 .video-grid iframe {
-  width: 100%;
+  width: 95%;
   height: 200px;
   border-radius: 10px;
 }
